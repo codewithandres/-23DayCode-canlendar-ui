@@ -44,7 +44,7 @@ body {
 
 .calendar {
     height: 610px;
-    width: max-content;
+    width: 400px;
     background-color: white;
     border-radius: 25px;
     overflow: hidden;
