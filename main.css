@@ -1,21 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-
 :root {
     --dark-text: #f8fbff;
     --light-body: #f3f8fe;
-    --light-mian: #fdfdfd;
-    --ligth-secont: #c3c2c8;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
     --light-hover: #f0f0f0;
     --light-text: #151426;
-    --light-btn: #0000ff;
+    --light-btn: #9796f0;
+    --blue: #0000ff;
     --white: #fff;
     --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    --font-family: "Raleway", sans-serif;
+    --font-family: consolas;
 }
 
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -24,35 +23,37 @@ body {
     place-items: center;
     font-family: var(--font-family);
     background: linear-gradient(to right, #9796f0, #fbc7d4);
+    overflow: hidden;
 }
 
-.container {
+.contianer {
     width: max-content;
     height: max-content;
-
     position: relative;
+    display: flex;
+    padding: 2% 0px 0px 0px;
+    justify-content: center;
     top: 10%;
     right: 0%;
-
-    display: flex;
-    justify-content: center;
-
-    padding: 2% 0 0 0;
     width: 100%;
     height: 100%;
 }
 
 .calendar {
     height: 610px;
-    width: 400px;
+    width: max-content;
     background-color: white;
     border-radius: 25px;
     overflow: hidden;
-    padding: 30px 50px 0 50px;
+    padding: 30px 50px 0px 50px;
+}
+
+.calendar {
+    box-shadow: var(--shadow);
 }
 
 .calendar-header {
-    background-color: #9796f0;
+    background: #9796f0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,49 +91,47 @@ body {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 2px;
-    color: var(--color-text);
+    color: var(--color-txt);
 }
 
 .calendar-days div {
     width: 37px;
     height: 33px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 5px;
     position: relative;
     cursor: pointer;
     animation: to-top 1s forwards;
 }
 
-.month-piker {
+.month-picker {
     padding: 5px 10px;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.month-piker:hover {
-    color: var(--color-hover);
+.month-picker:hover {
+    background-color: var(--color-hover);
 }
 
-.month-piker:hover {
-    color: var(--color-text);
+.month-picker:hover {
+    color: var(--color-txt);
 }
 
-.year-piker {
+.year-picker {
     display: flex;
     align-items: center;
 }
 
 .year-change {
-    width: 30px;
     height: 30px;
+    width: 30px;
     border-radius: 50%;
     display: grid;
     place-items: center;
-    margin: 0 10px;
+    margin: 0px 10px;
     cursor: pointer;
 }
 
@@ -142,7 +141,7 @@ body {
     transform: scale(1.12);
 }
 
-.year-change:hover {
+.year-change:hover pre {
     color: var(--bg-body);
 }
 
@@ -153,10 +152,10 @@ body {
     align-items: center;
 }
 
-#year {
+#year:hover {
     cursor: pointer;
     transform: scale(1.2);
-    transition: all .2s ease-in-out;
+    transition: all 0.2 ease-in-out;
 }
 
 .calendar-days div span {
@@ -166,56 +165,61 @@ body {
 .calendar-days div:hover {
     transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
     background-color: #fbc7d4;
-    border-radius: 20px;
+    border-radius: 20%;
     color: var(--dark-text);
 }
 
-.mooth-list {
+.calendar-days div.current-date {
+    color: var(--dark-text);
+    background-color: var(--light-btn);
+    border-radius: 20%;
+}
+
+.month-list {
     position: relative;
     left: 0;
     top: -50px;
-    background-color: #ebebebec;
+    background-color: #ebebeb;
     color: var(--light-text);
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 5px;
     border-radius: 20px;
 }
 
-.mooth-list>div {
+.month-list>div {
     display: grid;
     place-content: center;
     margin: 5px 10px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
-.mooth-list>div>div {
+.month-list>div>div {
     border-radius: 15px;
     padding: 10px;
     cursor: pointer;
-
 }
 
-.mooth-list>div>div:hover {
+.month-list>div>div:hover {
     background-color: var(--light-btn);
     color: var(--dark-text);
     transform: scale(0.9);
     transition: all 0.2s ease-in-out;
 }
 
-.mooth-list .show {
+.month-list.show {
     visibility: visible;
     pointer-events: visible;
     transition: 0.6s ease-in-out;
     animation: to-left .71s forwards;
 }
 
-.mooth-list.hideonce {
+.month-list.hideonce {
     visibility: hidden;
 }
 
-.mooth-list.hide {
-    animation: to-ringht 1s forwards;
+.month-list.hide {
+    animation: to-right 1s forwards;
     visibility: none;
     pointer-events: none;
 }
@@ -223,14 +227,15 @@ body {
 .date-time-formate {
     width: max-content;
     height: max-content;
-    font-family: var(--font-family);
+    font-family: Dubai Light, Century Gothic;
     position: relative;
-    top: 140px;
     display: inline;
+    top: 140px;
     justify-content: center;
 }
 
 .day-text-formate {
+    font-family: Microsoft JhengHei UI;
     font-size: 1.4rem;
     padding-right: 5%;
     border-right: 3px solid #9796f0;
@@ -244,7 +249,7 @@ body {
     width: max-content;
     position: relative;
     left: 40%;
-    top: -15px;
+    top: -18px;
     text-align: center;
 }
 
@@ -290,54 +295,55 @@ body {
 
 @keyframes to-left {
     0% {
-        transform: translateY(230%);
+        transform: translatex(230%);
         opacity: 1;
     }
 
     100% {
-        transform: translateY(230%);
+        transform: translatex(0);
         opacity: 1;
     }
 }
 
 @keyframes to-right {
-    0% {
-        transform: translateY(0%);
+    10% {
+        transform: translatex(0);
         opacity: 1;
     }
 
     100% {
-        transform: translateY(-150%);
+        transform: translatex(-150%);
         opacity: 1;
     }
 }
 
 @keyframes showtime {
     0% {
-        transform: translateY(250%);
+        transform: translatex(250%);
         opacity: 1;
     }
 
     100% {
-        transform: translateY(0%);
+        transform: translatex(0%);
         opacity: 1;
     }
 }
 
 @keyframes hidetime {
     0% {
-        transform: translateY(0%);
+        transform: translatex(0%);
         opacity: 1;
     }
 
     100% {
-        transform: translateY(-370%);
+        transform: translatex(-370%);
         opacity: 1;
     }
 }
 
-@media(max-width: 375px) {
-    .mooth-list>div {
-        margin: 5px 0;
+@media (max-width:375px) {
+    .month-list>div {
+
+        margin: 5px 0px;
     }
 }
