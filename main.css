@@ -59,6 +59,7 @@ body {
     font-weight: 700;
     color: var(--white);
     padding: 10px;
+    border-radius: .5em;
 }
 
 .calendar-body {

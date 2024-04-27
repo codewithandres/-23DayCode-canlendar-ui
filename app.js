@@ -119,7 +119,7 @@ const showCurrentDateOption = {
     weekday: 'long',
 };
 
-const currentDateFormate = new Intl.DateTimeFormat('en-US', showCurrentDateOption).format(currshowDate);
+const currentDateFormate = new Intl.DateTimeFormat('es-US', showCurrentDateOption).format(currshowDate);
 
 todayShowDate.textContent = currentDateFormate;
 
@@ -130,7 +130,7 @@ setInterval(() => {
         minute: 'numeric',
         second: 'numeric',
     };
-    const formateTimer = new Intl.DateTimeFormat('en-us', option).format(timer);
+    const formateTimer = new Intl.DateTimeFormat('es-us', option).format(timer);
 
     let time = `
     ${`${timer.getHours()}`.padStart(
